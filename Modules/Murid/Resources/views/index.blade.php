@@ -31,68 +31,68 @@
             <div class="col-12 col-md-6 col-lg-5">
               <div class="card card-congratulation-medal">
                   <div class="card-body">
-                      <h5>Selamat 🎉 {{Auth::user()->name}}!</h5>
-                      <p class="card-text font-small-3">Kamu Peringkat Pertama</p>
+                      <h5>Selamat Datang🎉 {{Auth::user()->name}}!</h5>
+                      <p class="card-text font-small-3">Ilmu dan iman adalah dua sayap <br> untuk terbang menuju keberhasilan.</p>
                       <h3 class="mb-75 mt-4">
-                          <a href="javascript:void(0);">Rangking 1</a>
+                          <a href="javascript:void(0);">Kunjungi Berita😊 </a>
                       </h3>
-                      <button type="button" class="btn btn-primary">Lihat Semua Peringkat</button>
+                      <a href="berita" class="btn btn-primary">Lihat Berita Sekolah</a>
                       <img src="{{asset('Assets/Backend/images/illustration/badge.svg')}}" class="congratulation-medal" alt="Medal Pic" />
                   </div>
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="card card-developer-meetup">
-                    <div class="meetup-img-wrapper rounded-top text-center">
-                        <img src="{{asset('Assets/Backend/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
-                    </div>
-                    <div class="card-body">
-                        <div class="meetup-header d-flex align-items-center">
-                            <div class="meetup-day">
-                                <h6 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('l')}}</h6>
-                                <h3 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('d')}}</h3>
-                            </div>
-                            <div class="my-auto">
-                                <h4 class="card-title mb-25">{{$event->title ?? 'Belum Ada Acara'}}</h4>
-                                <p class="card-text mb-0">{{$event->desc ?? 'Belum Ada Acara'}}</p>
-                            </div>
+                {{-- <div class="col-lg-4 col-md-6 col-12">
+                    <div class="card card-developer-meetup">
+                        <div class="meetup-img-wrapper rounded-top text-center">
+                            <img src="{{asset('Assets/Backend/images/illustration/email.svg')}}" alt="Meeting Pic" height="170" />
                         </div>
-                        <div class="media">
-                            <div class="avatar bg-light-primary rounded mr-1">
-                                <div class="avatar-content">
-                                    <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                        <div class="card-body">
+                            <div class="meetup-header d-flex align-items-center">
+                                <div class="meetup-day">
+                                    <h6 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('l')}}</h6>
+                                    <h3 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('d')}}</h3>
+                                </div>
+                                <div class="my-auto">
+                                    <h4 class="card-title mb-25">{{$event->title ?? 'Belum Ada Acara'}}</h4>
+                                    <p class="card-text mb-0">{{$event->desc ?? 'Belum Ada Acara'}}</p>
                                 </div>
                             </div>
-                            <div class="media-body">
-                                <h6 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('d F, Y')}}</h6>
-                                <small>{{Carbon\Carbon::parse($event->acara ?? 0)->format('H:i:s')}}</small>
-                            </div>
-                        </div>
-                        <div class="media">
-                            <div class="avatar bg-light-primary rounded mr-1">
-                                <div class="avatar-content">
-                                    <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
+                            <div class="media">
+                                <div class="avatar bg-light-primary rounded mr-1">
+                                    <div class="avatar-content">
+                                        <i data-feather="calendar" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="mb-0">{{Carbon\Carbon::parse($event->acara ?? 0)->format('d F, Y')}}</h6>
+                                    <small>{{Carbon\Carbon::parse($event->acara ?? 0)->format('H:i:s')}}</small>
                                 </div>
                             </div>
-                            <div class="media-body">
-                                <h6 class="mb-0">{{$event->lokasi ?? 'Belum Ada Acara'}}</h6>
-                                <small>Manhattan, New york City</small>
+                            <div class="media">
+                                <div class="avatar bg-light-primary rounded mr-1">
+                                    <div class="avatar-content">
+                                        <i data-feather="map-pin" class="avatar-icon font-medium-3"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h6 class="mb-0">{{$event->lokasi ?? 'Belum Ada Acara'}}</h6>
+                                    <small>Manhattan, New york City</small>
+                                </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            </div>
+                </div> --}}
 
-            <div class="col-xl-8 col-md-6 col-12">
+            <div class="col-xl-12 col-md-12 col-12 w-full">
               <div class="row">
-                <div class="col-12">
+                <div class="col-12 w-100">
                     <div class="card card-statistics">
                         <div class="card-header">
-                            <h4 class="card-title">Perpustakaan</h4>
+                            <h4 class="card-title fw-semibold">Perpustakaan</h4>
                             <div class="d-flex align-items-center">
-                                <p class="card-text font-small-2 mr-25 mb-0">Updated 1 day ago</p>
+                                <p class="card-text font-small-5 mr-25 mb-0">Updated 1 day ago</p>
                             </div>
                         </div>
                         <div class="card-body statistics-body">
@@ -109,7 +109,7 @@
                                             @if (Auth::user()->member)
                                               <p class="card-text font-small-1 mb-0">Member sejak {{Carbon\carbon::parse(Auth::user()->member->created_at)->format('d F Y')}} </p>
                                             @else
-                                              <p class="card-text font-small-1 mb-0 text-warning"> Belum menjadi member Perpustakaan</p>
+                                              <p class="card-text font-small-6 mb-0 text-warning"> Belum menjadi member Perpustakaan</p>
                                             @endif
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                         </div>
                                         <div class="media-body my-auto">
                                             <h4 class="font-weight-bolder mb-0">{{$pinjam}}</h4>
-                                            <p class="card-text font-small-3 mb-0">Buku Dipinjam</p>
+                                            <p class="card-text font-small-6 mb-0">Buku Dipinjam</p>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                         </div>
                                         <div class="media-body my-auto">
                                             <h4 class="font-weight-bolder mb-0">{{$lateness}}</h4>
-                                            <p class="card-text font-small-3 mb-0">Belum Dikembalikan</p>
+                                            <p class="card-text font-small-6 mb-0">Belum Dikembalikan</p>
                                         </div>
                                     </div>
                                 </div>

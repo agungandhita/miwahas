@@ -106,8 +106,14 @@ class KategoriBeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($kategoriBerita){
+        $kategoriBerita = KategoriBerita::where('id', $kategoriBerita)->first();
+        $kategoriBerita->update([
+            'deleted_at' => now(),
+            'user_deleted' => auth()->user()->id,
+            'deleted' => true
+        ]);
+        session()->flash('success', 'Berhasil menghapus data');
+        return redirect()->back();
     }
 }

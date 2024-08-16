@@ -2,6 +2,7 @@
 
 namespace Modules\PPDB\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -15,10 +16,10 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name'                  => 'required',
-            'email'                 => 'required|email|unique:users',
+            'email'                 => ['required', Rule::unique('users', 'email')->whereNull('deleted_at'), 'email'],
             'password'              => 'required',
             'confirm_password'      => 'required|same:password',
-            'whatsapp'              => 'required|numeric|unique:data_murids',
+            'whatsapp'              => ['required','numeric',Rule::unique('data_murids', 'whatsapp')->whereNull('deleted_at')],
             'asal_sekolah'          => 'required'
         ];
     }

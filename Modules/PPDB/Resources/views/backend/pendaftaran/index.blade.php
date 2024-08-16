@@ -162,7 +162,7 @@
                                         <select name="agama" class="form-control @error('agama') is-invalid @enderror">
                                             <option value="">-- Pilih --</option>
                                             <option value="Islam" {{$user->muridDetail->agama == 'Islam' ? 'selected' : ''}}>Islam</option>
-                                            <option value="Krtisten Katolik" {{$user->muridDetail->agama == 'Krtisten Katolik' ? 'selected' : ''}}>Krtisten Katolik</option>
+                                            <option value="Kristen Katolik" {{$user->muridDetail->agama == 'Krtisten Katolik' ? 'selected' : ''}}>Kristen Katolik</option>
                                             <option value="Kristen Protestan" {{$user->muridDetail->agama == 'Kristen Protestan' ? 'selected' : ''}}>Kristen Protestan</option>
                                             <option value="Hindu" {{$user->muridDetail->agama == 'Hindu' ? 'selected' : ''}}>Hindu</option>
                                             <option value="Budha" {{$user->muridDetail->agama == 'Budha' ? 'selected' : ''}}>Budha</option>
@@ -210,6 +210,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Alamat Sesuai Kartu Keluarga</label>

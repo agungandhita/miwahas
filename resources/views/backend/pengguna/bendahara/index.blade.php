@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Bendahara <a href=" {{route('backend-pengguna-bendahara.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Bendahara <a href="{{ route('backend-pengguna-bendahara.create') }}" class="btn btn-primary">Tambah</a></h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -55,17 +55,48 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           @foreach ($bendahara as $key => $bendaharas)
+                                            @foreach ($bendahara as $key => $bendaharas)
                                                 <tr>
                                                     <td></td>
-                                                    <td> {{$key+1}} </td>
-                                                    <td> {{$bendaharas->name}} </td>
-                                                    <td> {{$bendaharas->userDetail->nip}} </td>
-                                                    <td> {{$bendaharas->email}} </td>
-                                                    <td> {{$bendaharas->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
-                                                    <td><a href=" {{route('backend-pengguna-bendahara.edit', $bendaharas->id)}} " class="btn btn-success btn-sm">Edit</a></td>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $bendaharas->name }}</td>
+                                                    <td>{{ $bendaharas->userDetail->nip }}</td>
+                                                    <td>{{ $bendaharas->email }}</td>
+                                                    <td>{{ $bendaharas->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                                    <td>
+                                                        <a href="{{ route('backend-pengguna-bendahara.edit', $bendaharas->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $bendaharas->id }}">
+                                                            Hapus
+                                                        </button>
+                                                    </td>
                                                 </tr>
-                                           @endforeach
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleteModal{{ $bendaharas->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $bendaharas->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel{{ $bendaharas->id }}">Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus bendahara ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                <form action="{{ route('backend-pengguna-bendahara.destroy', $bendaharas->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

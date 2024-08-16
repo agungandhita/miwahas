@@ -11,4 +11,7 @@ class UsersDetail extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'users_details';
+    protected $guarded = [
+        'id'
+    ];
 }

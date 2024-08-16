@@ -49,7 +49,7 @@
                 <ul class="menu-content">
                     <li class="nav-item {{ (request()->is('program-studi')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('program-studi.index')}} "><i data-feather="circle"></i>
-                            <span class="menu-item text-truncate" data-i18n="Basic">Program</span>
+                            <span class="menu-item text-truncate" data-i18n="Basic">Mata Pelajaran</span>
                         </a>
                     </li>
                     <li class="nav-item {{ (request()->is('backend-kegiatan')) ? 'active' : '' }}">
@@ -115,11 +115,11 @@
                             <span class="menu-item text-truncate" data-i18n="Basic">Pengajar</span>
                         </a>
                     </li>
-                    <li class="nav-item {{ (request()->is('backend-pengguna-staf')) ? 'active' : '' }}">
+                    {{-- <li class="nav-item {{ (request()->is('backend-pengguna-staf')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-pengguna-staf.index')}} "><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Staff</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item {{ (request()->is('backend-pengguna-murid')) ? 'active' : '' }}">
                         <a class="d-flex align-items-center" href=" {{route('backend-pengguna-murid.index')}} "><i data-feather="circle"></i>
                             <span class="menu-item text-truncate" data-i18n="Basic">Murid</span>

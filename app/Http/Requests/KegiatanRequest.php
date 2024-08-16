@@ -24,7 +24,7 @@ class KegiatanRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama'      => ['required','unique:kegiatans'],
+            'nama'      => ['required'],
             'content'   => ['required']
         ];
     }
@@ -33,7 +33,6 @@ class KegiatanRequest extends FormRequest
     {
         return [
             'nama.required'      => 'Nama Kegiatan tidak boleh kosong.',
-            'nama.unique'        => 'Nama Kegiatan sudah pernah dibuat.',
             'content.required'   => 'Content tidak boleh kosong.'
         ];
     }

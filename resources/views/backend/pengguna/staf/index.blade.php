@@ -63,8 +63,40 @@
                                                 <td> {{$stafs->userDetail->nip}} </td>
                                                 <td> {{$stafs->email}} </td>
                                                 <td> {{$stafs->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
-                                                <td><a href=" {{route('backend-pengguna-staf.edit', $stafs->id)}} " class="btn btn-success btn-sm">Edit</a></td>
+                                                <td>
+                                                    <a href="{{ route('backend-pengguna-staf.edit', $stafs->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $stafs->id }}">
+                                                        Hapus
+                                                    </button>
+                                                </td>
                                             </tr>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteModal{{ $stafs->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $stafs->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteModalLabel{{ $stafs->id }}">Konfirmasi Hapus</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda yakin ingin menghapus staf ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <form action="{{ route('backend-pengguna-staf.destroy', $stafs->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">Hapus</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                        @endforeach
                                         </tbody>                                   
                                     </table>

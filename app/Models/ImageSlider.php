@@ -11,4 +11,7 @@ class ImageSlider extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'image_sliders';
+    protected $guarded = [
+        'id'
+    ];
 }

@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Murid <a href=" {{route('backend-pengguna-murid.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Murid <a href="{{ route('backend-pengguna-murid.create') }}" class="btn btn-primary">Tambah</a></h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -58,16 +58,41 @@
                                             @foreach ($murid as $key => $murids)
                                                 <tr>
                                                     <td></td>
-                                                    <td> {{$key+1}} </td>
-                                                    <td> {{$murids->name}} </td>
-                                                    <td> {{$murids->email}} </td>
-                                                    <td> {{$murids->status}} </td>
-                                                    <td> {{$murids->role == 'Guest' ? 'Calon Murid' : 'Murid'}} </td>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $murids->name }}</td>
+                                                    <td>{{ $murids->email }}</td>
+                                                    <td>{{ $murids->status }}</td>
+                                                    <td>{{ $murids->role == 'Guest' ? 'Calon Murid' : 'Murid' }}</td>
                                                     <td>
-                                                        <a href=" {{route('backend-pengguna-murid.edit', $murids->id)}} " class="btn btn-success btn-sm">Edit</a>
+                                                        <a href="{{ route('backend-pengguna-murid.edit', $murids->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $murids->id }}">Hapus</button>
                                                     </td>
                                                 </tr>
-                                             @endforeach
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleteModal{{ $murids->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $murids->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel{{ $murids->id }}">Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus murid ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                <form action="{{ route('backend-pengguna-murid.destroy', $murids->id) }}" method="POST" style="display:inline;">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </tbody>                                   
                                     </table>
                                 </div>

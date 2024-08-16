@@ -2,6 +2,7 @@
 
 namespace Modules\Perpustakaan\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PublisherRequest extends FormRequest
@@ -14,7 +15,7 @@ class PublisherRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => 'required|unique:publishers',
+            'name'    => ['required', Rule::unique('publishers', 'name')->whereNull('deleted_at')],
             'address' => 'required',
             'phone'   => 'required|numeric'
         ];

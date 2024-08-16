@@ -11,6 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     @include('layouts.Frontend.style')
+
 </head>
 
 <body>

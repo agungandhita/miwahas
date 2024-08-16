@@ -130,8 +130,14 @@ class KegiatanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($kegiatan){
+        $kegiatan = Kegiatan::where('id', $kegiatan)->first();
+        $kegiatan->update([
+            'deleted_at' => now(),
+            'user_deleted' => auth()->user()->id,
+            'deleted' => true
+        ]);
+        session()->flash('success', 'Berhasil menghapus data');
+        return redirect()->back();
     }
 }

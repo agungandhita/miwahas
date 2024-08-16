@@ -77,7 +77,7 @@ class MuridController extends Controller
             // Pilih kalimat
             $kalimatKe  = "1";
             $username   = implode(" ", array_slice(explode(" ", $request->name), 0, $kalimatKe)); // ambil kalimat
-
+            // Pa$$w0rd!
             $murid = new User();
             $murid->name            = $request->name;
             $murid->username        = $username;
@@ -191,9 +191,14 @@ class MuridController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+     */  public function destroy($murid){
+        $murid = User::where('id', $murid)->first();
+        $murid->update([
+            'deleted_at' => now(),
+            'user_deleted' => auth()->user()->id,
+            'deleted' => true
+        ]);
+        session()->flash('success', 'Berhasil menghapus data');
+        return redirect()->back();
     }
 }

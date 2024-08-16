@@ -140,4 +140,15 @@ class ProgramController extends Controller
             throw new ErrorException($e->getMessage());
         }
     }
+
+    public function destroy($jurusan){
+        $jurusan = Jurusan::where('id', $jurusan)->first();
+        $jurusan->update([
+            'deleted_at' => now(),
+            'user_deleted' => auth()->user()->id,
+            'deleted' => true
+        ]);
+        session()->flash('success', 'Berhasil menghapus data');
+        return redirect()->back();
+    }
 }

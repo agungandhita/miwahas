@@ -11,6 +11,9 @@ class Jurusan extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'jurusans';
+    protected $guarded = [
+        'id'
+    ];
 
     public function dataJurusan()
     {

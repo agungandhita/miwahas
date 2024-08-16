@@ -15,7 +15,7 @@ class CreateKegiatansTable extends Migration
     {
         Schema::create('kegiatans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->string('slug');
             $table->string('image')->nullable();
             $table->string('imagas')->nullable();

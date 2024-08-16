@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Perpustakaan <a href=" {{route('backend-pengguna-perpus.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Perpustakaan <a href="{{ route('backend-pengguna-perpus.create') }}" class="btn btn-primary">Tambah</a></h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -55,17 +55,48 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           @foreach ($perpus as $key => $perpuss)
+                                            @foreach ($perpus as $key => $perpuss)
                                                 <tr>
                                                     <td></td>
-                                                    <td> {{$key+1}} </td>
-                                                    <td> {{$perpuss->name}} </td>
-                                                    <td> {{$perpuss->userDetail->nip}} </td>
-                                                    <td> {{$perpuss->email}} </td>
-                                                    <td> {{$perpuss->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif'}} </td>
-                                                    <td><a href=" {{route('backend-pengguna-perpus.edit', $perpuss->id)}} " class="btn btn-success btn-sm">Edit</a></td>
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <td>{{ $perpuss->name }}</td>
+                                                    <td>{{ $perpuss->userDetail->nip }}</td>
+                                                    <td>{{ $perpuss->email }}</td>
+                                                    <td>{{ $perpuss->status == 'Aktif' ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                                    <td>
+                                                        <a href="{{ route('backend-pengguna-perpus.edit', $perpuss->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $perpuss->id }}">
+                                                            Hapus
+                                                        </button>
+                                                    </td>
                                                 </tr>
-                                           @endforeach
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="deleteModal{{ $perpuss->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $perpuss->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel{{ $perpuss->id }}">Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus staf ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                <form action="{{ route('backend-pengguna-perpus.destroy', $perpuss->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

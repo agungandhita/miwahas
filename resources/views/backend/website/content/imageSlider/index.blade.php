@@ -35,14 +35,14 @@
         <div class="row">
             <div class="col-12">
                 <section>
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="col">
+                        <div class="">
                             <div class="card">
                                 <div class="card-header border-bottom">
                                     <h4 class="card-title">Image Slider</h4>
                                 </div>
-                                <div class="card-datatable">
-                                    <table class="dt-responsive table">
+                                <div class="card-datatable table-responsive">
+                                    <table class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -56,26 +56,51 @@
                                             @foreach ($image as $key => $images)
                                                 <tr>
                                                     <td></td>
-                                                    <td> {{$key+1}} </td>
-                                                    <td> <img src="{{asset('storage/images/slider/' .$images->image)}}" class="img-responsive" style="max-width: 50px; max-height:50px"> </td>
-                                                    <td> {{$images->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
+                                                    <td>{{ $key+1 }}</td>
+                                                    <td><img src="{{ asset('storage/images/slider/' . $images->image) }}" class="img-responsive" style="max-width: 50px; max-height:50px"></td>
+                                                    <td>{{ $images->is_active == '0' ? 'Aktif' : 'Tidak Aktif' }}</td>
                                                     <td>
-                                                        <a href=" {{route('backend-imageslider.edit', $images->id)}} " class="btn btn-success btn-sm">Edit</a>
+                                                        <a href="{{ route('backend-imageslider.edit', $images->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $images->id }}">Hapus</button>
                                                     </td>
                                                 </tr>
+                                                <!-- Modal Konfirmasi Hapus -->
+                                                <div class="modal fade" id="deleteModal{{ $images->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $images->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel{{ $images->id }}">Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus gambar slider ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form action="{{ route('backend-imageslider.destroy', $images->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endforeach
                                         </tbody>                                   
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="">
                             <div class="card">
                                 <div class="card-header header-bottom">
                                     <h4>Tambah Image Slider</h4>
                                 </div>
                                 <div class="card-body">
-                                    <form action=" {{route('backend-imageslider.store')}} " method="post" enctype="multipart/form-data">
+                                    <form action="{{ route('backend-imageslider.store') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="col-6">
@@ -109,7 +134,7 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="basicInput">Title</label> <span class="text-danger">*</span>
-                                                   <input type="text" name="title" class="form-control @error('title') is-invalid @enderror">
+                                                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror">
                                                     @error('title')
                                                         <div class="invalid-feedback">
                                                         <strong>{{ $message }}</strong>
@@ -132,7 +157,7 @@
                                           
                                         </div>
                                         <button class="btn btn-primary" type="submit">Tambah</button>
-                                        <a href="{{route('backend-imageslider.index')}}" class="btn btn-warning">Batal</a>
+                                        <a href="{{ route('backend-imageslider.index') }}" class="btn btn-warning">Batal</a>
                                     </form>
                                 </div>
                             </div>

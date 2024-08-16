@@ -22,27 +22,39 @@ class ForgotPasswordController extends Controller
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
-    
+
         $user = User::where('email', $request->email)->first();
-    
-        if (!$user) {
-            return back()->with('error', 'Email tidak ditemukan.');
+
+        try{
+            
+            DB::beginTransaction();
+        
+            if (!$user) {
+                return back()->with('error', 'Email tidak ditemukan.');
+            }
+        
+            // Cek apakah token reset sudah ada
+            $tokenExists = DB::table('password_resets')->where('email', $request->email)->exists();
+        
+            if ($tokenExists) {
+                return back()->with('error', 'Email lupa password sudah ada, silakan cek email Anda.');
+            }
+        
+            $response = Password::sendResetLink(
+                $request->only('email')
+            );
+        
+            DB::commit();
+            return $response == Password::RESET_LINK_SENT
+                ? redirect('/login')->with('success', 'Email untuk reset password berhasil dikirim, silakan cek email Anda.')
+                : redirect('/login')->with('error', 'Tidak berhasil mengirim email reset password.');
+            
+        }catch(Exception $e){
+            DB::rollBack();
+            return redirect('/login')->with('error', $e->getMessage());
+
         }
-    
-        // Cek apakah token reset sudah ada
-        $tokenExists = DB::table('password_resets')->where('email', $request->email)->exists();
-    
-        if ($tokenExists) {
-            return back()->with('error', 'Email lupa password sudah ada, silakan cek email Anda.');
-        }
-    
-        $response = Password::sendResetLink(
-            $request->only('email')
-        );
-    
-        return $response == Password::RESET_LINK_SENT
-            ? redirect('/login')->with('success', 'Email untuk reset password berhasil dikirim, silakan cek email Anda.')
-            : redirect('/login')->with('error', 'Tidak berhasil mengirim email reset password.');
+       
     }
     
 

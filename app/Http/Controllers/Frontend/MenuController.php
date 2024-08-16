@@ -31,6 +31,8 @@ class MenuController extends Controller
         // Menu
         $jurusanM = Jurusan::where('is_active','0')->get();
         $kegiatanM = Kegiatan::where('is_active','0')->get();
-        return view('frontend.program.kegiatan.show', compact('kegiatan','jurusanM','kegiatanM'));
+        $footer = Footer::first();
+
+        return view('frontend.program.kegiatan.show', compact('kegiatan','jurusanM','kegiatanM', 'footer'));
     }
 }

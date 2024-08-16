@@ -15,8 +15,8 @@ class CreateJurusansTable extends Migration
     {
         Schema::create('jurusans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->unique();
-            $table->string('singkatan')->unique()->nullable();
+            $table->string('nama');
+            $table->string('singkatan')->nullable();
             $table->string('slug')->unique();
             $table->enum('is_active',[0,1])->default(0);
 

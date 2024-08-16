@@ -2,6 +2,7 @@
 
 namespace Modules\Perpustakaan\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BookRequest extends FormRequest
@@ -14,7 +15,7 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-          'name'  => 'required|unique:books',
+          'name'  => ['required', Rule::unique('books', 'name')->whereNull('deleted_at')],
           'description' => 'required',
           'category_id' => 'required',
           'publisher_id'  => 'required',

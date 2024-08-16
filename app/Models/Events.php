@@ -11,4 +11,7 @@ class Events extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'events';
+    protected $guarded = [
+        'id'
+    ];
 }

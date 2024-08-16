@@ -15,8 +15,8 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
-            $table->string('member_code')->unique();
-            $table->foreignId('user_id')->unique();
+            $table->string('member_code');
+            $table->foreignId('user_id');
             $table->string('name');
             $table->boolean('is_active')->default(0);
 

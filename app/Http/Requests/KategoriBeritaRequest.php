@@ -25,7 +25,7 @@ class KategoriBeritaRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'nama'      => ['required','unique:kategori_beritas'],
+                'nama'      => ['required'],
                 'is_active' => ['required']
             ];
         }
@@ -40,7 +40,6 @@ class KategoriBeritaRequest extends FormRequest
     {
         return [
             'nama.required'         => 'Kategori tidak boleh kosong.',
-            'nama.unique'           => 'Kategori sudah pernah digunakan.',
             'is_active.required'    => 'Status harus dipilih.'
         ];
     }

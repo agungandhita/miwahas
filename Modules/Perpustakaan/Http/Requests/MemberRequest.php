@@ -2,6 +2,7 @@
 
 namespace Modules\Perpustakaan\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MemberRequest extends FormRequest
@@ -14,7 +15,7 @@ class MemberRequest extends FormRequest
     public function rules()
     {
         return [
-          'user_id' => 'required|unique:members'
+          'user_id' => ['required', Rule::unique('members', 'user_id')->whereNull('deleted_at')]
         ];
     }
 

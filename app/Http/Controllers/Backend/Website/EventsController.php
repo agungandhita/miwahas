@@ -133,8 +133,14 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($event){
+        $event = Events::where('id', $event)->first();
+        $event->update([
+            'deleted_at' => now(),
+            'user_deleted' => auth()->user()->id,
+            'deleted' => true
+        ]);
+        session()->flash('success', 'Berhasil menghapus data');
+        return redirect()->back();
     }
 }

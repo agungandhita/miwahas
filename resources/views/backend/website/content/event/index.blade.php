@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Event <a href=" {{route('backend-event.create')}} " class="btn btn-primary">Tambah</a> </h4>
+                                    <h4 class="card-title">Event <a href="{{ route('backend-event.create') }}" class="btn btn-primary">Tambah</a> </h4>
                                 </div>
                                 <div class="card-datatable">
                                     <table class="dt-responsive table">
@@ -59,20 +59,48 @@
                                             @foreach ($event as $key => $events)
                                                 <tr>
                                                     <td></td>
-                                                    <td> {{$key+1}} </td>
-                                                    <td> {{$events->title}} </td>
-                                                    <td> 
-                                                        <img src="{{asset('storage/images/event/' .$events->thumbnail)}}" class="img-responsive" style="max-width: 50px; max-height:50px"> 
-                                                    </td>
-                                                    <td> {{$events->lokasi}} </td>
-                                                    <td> {{$events->acara}} </td>
-                                                    <td> {{$events->is_active == '0' ? 'Aktif' : 'Tidak Aktif'}} </td>
+                                                    <td>{{ $key+1 }}</td>
+                                                    <td>{{ $events->title }}</td>
                                                     <td>
-                                                        <a href=" {{route('backend-event.edit', $events->id)}} " class="btn btn-success btn-sm">Edit</a>
+                                                        <img src="{{ asset('storage/images/event/' . $events->thumbnail) }}" class="img-responsive" style="max-width: 50px; max-height:50px">
+                                                    </td>
+                                                    <td>{{ $events->lokasi }}</td>
+                                                    <td>{{ $events->acara }}</td>
+                                                    <td>{{ $events->is_active == '0' ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                                    <td>
+                                                        <div style="display: flex; gap: 4px">
+
+                                                            <a href="{{ route('backend-event.edit', $events->id) }}" class="btn btn-success btn-sm">Edit</a>
+                                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal{{ $events->id }}">Hapus</button>
+                                                        </div>
                                                     </td>
                                                 </tr>
+                                                <!-- Modal Konfirmasi Hapus -->
+                                                <div class="modal fade" id="deleteModal{{ $events->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $events->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteModalLabel{{ $events->id }}">Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah Anda yakin ingin menghapus event ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <form action="{{ route('backend-event.destroy', $events->id) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endforeach
-                                        </tbody>                                   
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

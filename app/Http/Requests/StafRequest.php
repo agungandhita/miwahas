@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StafRequest extends FormRequest
@@ -25,8 +26,8 @@ class StafRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'name'          => ['required','unique:users'],
-                'email'         => ['required','unique:users','email'],
+                'name'          => ['required', Rule::unique('users', 'name')->whereNull('deleted_at')],
+                'email'         => ['required',Rule::unique('users', 'email')->whereNull('deleted_at'),'email'],
                 'foto_profile'  => ['required','image','max:1024'],
                 'nip'           => ['required','numeric'],
             ];

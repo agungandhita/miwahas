@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProgramRequest extends FormRequest
@@ -24,7 +25,7 @@ class ProgramRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama'      => ['required','unique:jurusans'],
+            'nama'      => ['required', Rule::unique('jurusans', 'nama')->whereNull('deleted_at')],
             'singkatan' => ['required','unique:jurusans'],
             'content'   => ['required'],
             'image'     => ['required']

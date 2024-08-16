@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ImageSliderRequest extends FormRequest
@@ -27,7 +28,12 @@ class ImageSliderRequest extends FormRequest
             'desc'      => ['required'],
             'title'     => ['required'],
             'image'     => ['required'],
-            'urutan'    => ['required','unique:image_sliders']
+            'urutan'    => [
+                'required',
+                Rule::unique('image_sliders')->where(function ($query) {
+                    return $query->whereNull('deleted_at');
+                })
+            ],
         ];
     }
 

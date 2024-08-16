@@ -40,9 +40,9 @@
                           @foreach ($book as $books)
                             <div class="col-md-6 col-12">
                                 <div class="card">
-                                    <a href="#">
+                                    <div>
                                         <img class="card-img-top img-fluid" src="{{asset('storage/images/thumbnail/' .$books->thumbnail)}}" alt="Cover Buku" style="max-height: 200px; max-weidth:100px; min-height:200px" />
-                                    </a>
+                                    </div>
                                     <div class="card-body">
                                         <h4 class="card-title">
                                             <a href="#" class="blog-title-truncate text-body-heading">{{$books->name}}</a>
@@ -78,24 +78,30 @@
                             </div>
                           @endforeach
                         </div>
-
+                        @if($book->count() <= 0)
+                            <h1 class="text-warning">Buku Tidak di temukan</h1>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="sidebar-detached sidebar-right">
                 <div class="sidebar">
+
                     <div class="blog-sidebar my-2 my-lg-0">
                         <!-- Search bar -->
-                        <div class="blog-search">
+                        <form class="blog-search">
                             <div class="input-group input-group-merge">
-                                <input type="text" class="form-control" placeholder="Cari Buku" />
+                                <input type="text" name="search" class="form-control" placeholder="Cari Buku" value="{{ request('search') }}"/>
                                 <div class="input-group-append">
-                                    <span class="input-group-text cursor-pointer">
+                                    <button  type="submit" class="input-group-text cursor-pointer">
                                         <i data-feather="search"></i>
-                                    </span>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
+                        @if(request('search'))
+                        <a href="/murid/perpustakaan" class="btn btn-danger mt-2">Hapus Pencarian</a>
+                        @endif
                         <!--/ Search bar -->
 
 
@@ -104,9 +110,9 @@
                             <div class="mt-75">
                                 @foreach ($populer as $populers)
                                   <div class="media mb-2">
-                                    <a href="page-blog-detail.html" class="mr-2">
+                                    <div class="mr-2">
                                         <img class="rounded" src="{{asset('storage/images/thumbnail/' .$populers->thumbnail)}}" width="100" height="70" alt="Recent Post Pic" />
-                                    </a>
+                                    </div>
                                     <div class="media-body">
                                         <h6 class="blog-recent-post-title">
                                             <a href="page-blog-detail.html" class="text-body-heading">{{$populers->name}}</a>

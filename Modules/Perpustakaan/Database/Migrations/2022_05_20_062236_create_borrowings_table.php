@@ -15,7 +15,7 @@ class CreateBorrowingsTable extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->id();
-            $table->string('borrow_code')->unique();
+            $table->string('borrow_code');
             $table->foreignId('member_id');
             $table->foreignId('book_id');
             $table->date('borrow_date');

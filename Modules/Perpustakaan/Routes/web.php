@@ -11,9 +11,9 @@
 |
 */
 
-Route::prefix('perpustakaan')->group(function() {
-    Route::get('/', 'PerpustakaanController@index');
-});
+// Route::prefix('perpustakaan')->group(function() {
+//     Route::get('/', 'PerpustakaanController@index');
+// });
 
 Route::prefix('perpus')->middleware('role:Perpustakaan')->group(function() {
   Route::resources([

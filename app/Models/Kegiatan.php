@@ -11,4 +11,7 @@ class Kegiatan extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'kegiatans';
+    protected $guarded = [
+        'id'
+    ];
 }

@@ -35,14 +35,14 @@
         <div class="row">
             <div class="col-12">
                 <section>
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="col">
+                        <div class="">
                             <div class="card">
                                 <div class="card-header border-bottom">
                                     <h4 class="card-title">About</h4>
                                 </div>
-                                <div class="card-datatable">
-                                    <table class="dt-responsive table">
+                                <div class="card-datatable table-responsive">
+                                    <table class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="">
                             <div class="card">
                                 <div class="card-header header-bottom">
                                     <h4>Tambah About</h4>

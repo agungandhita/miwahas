@@ -2,6 +2,7 @@
 
 namespace Modules\Perpustakaan\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AuthorRequest extends FormRequest
@@ -14,7 +15,7 @@ class AuthorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'  => 'required|unique:authors'
+            'name'  => ['required', Rule::unique('authors', 'name')->whereNull('deleted_at')]
         ];
     }
 

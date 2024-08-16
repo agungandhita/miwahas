@@ -11,10 +11,18 @@
                     <div class="col-lg-6 col-md-6 col-sm-9">
                         <nav id="desktop-nav">
                             <ul>
-                                <li><a href="#">Program Studi</a></li>
-                                <li><a href="#">Alur Pendaftaran</a></li>
-                                <li><a href="#">Berkas</a></li>
-                                <li><a href="#">Biaya</a></li>
+                                <li class="{{ (request()->is('/')) ? 'active' : '' }}"><a href="/">Beranda</a></li>
+                                <li><a href="#">Tentang Kami</a>
+                                    <ul>
+                                        <li><a href=" {{route('profile.sekolah')}} ">Profile Sekolah</a></li>
+                                        <li><a href=" {{route('visimisi.sekolah')}} ">Visi dan Misi</a></li>
+                                    </ul>
+                                </li>
+    
+                               
+                                <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
+                                <li class="{{ (request()->is('ppdb')) ? 'active' : '' }}"><a href="{{url('ppdb')}}" >PPDB</a></li>
+    
                             </ul>
                         </nav>
                     </div>

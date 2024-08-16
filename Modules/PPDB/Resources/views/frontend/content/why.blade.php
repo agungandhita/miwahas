@@ -16,7 +16,7 @@
                         </div>
                         <div aria-expanded="false" id="collapseOne" role="tabpanel" class="panel-collapse collapse in">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>Kami di MI Wachid Hasjim Asy'ari bangga menjadi sekolah yang berakreditasi A, memberikan pendidikan berkualitas tinggi dan mendalam bagi generasi muda</p>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div aria-expanded="false" id="collapseTwo" role="tabpanel" class="panel-collapse collapse">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>Lab. Komputer, Perpustakaan, LCD Proyektor dll.</p>
                             </div>
                         </div>
                     </div>
@@ -45,14 +45,14 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                        <span class="faq-box-count">3</span>Pengajar S1 dan S2 dari lulusan kampus ternama.
+                                        <span class="faq-box-count">3</span>Tenaga Pendidik Profesional.
                                     </a>
                                 </h3>
                             </div>
                         </div>
                         <div aria-expanded="false" id="collapseThree" role="tabpanel" class="panel-collapse collapse">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>Tenaga Pendidik Profesional: Guru-guru berpengalaman dan berdedikasi tinggi yang siap membimbing dan menginspirasi siswa siswi.</p>
                             </div>
                         </div>
                     </div>
@@ -65,14 +65,14 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                                        <span class="faq-box-count">4</span>Beasiswa Sekolah dan Kampus.
+                                        <span class="faq-box-count">4</span>Kurikulum Berbasis Karakter.
                                     </a>
                                 </h3>
                             </div>
                         </div>
                         <div aria-expanded="false" id="collapseFour" role="tabpanel" class="panel-collapse collapse">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>Menggabungkan kurikulum nasional dengan nilai-nilai keislaman untuk membentuk karakter anak yang berakhlak mulia dan cerdas..</p>
                             </div>
                         </div>
                     </div>
@@ -83,14 +83,14 @@
                             <div class="panel-title faq-box-title">
                                 <h3>
                                     <a aria-expanded="false" class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-                                        <span class="faq-box-count">5</span>Alumni siap kerja, siap kuliah dan siap berwirausaha.
+                                        <span class="faq-box-count">5</span>MI Wachid Hasjim Asy'ari mempersiapkan alumninya dengan memberikan pendidikan berkualitas.
                                     </a>
                                 </h3>
                             </div>
                         </div>
                         <div aria-expanded="false" id="collapseFive" role="tabpanel" class="panel-collapse collapse">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>MI Wachid Hasjim Asy'ari mempersiapkan alumninya dengan memberikan pendidikan berkualitas yang tidak hanya fokus pada akademik tetapi juga pengembangan karakter. Sekolah ini juga membekali siswa dengan keterampilan dasar yang berguna untuk melanjutkan pendidikan ke jenjang yang lebih tinggi dan berpartisipasi aktif dalam kegiatan kemasyarakatan.</p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@
                         </div>
                         <div aria-expanded="false" id="collapseSix" role="tabpanel" class="panel-collapse collapse">
                             <div class="panel-body faq-box-body">
-                                <p>Dorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuriesthe leap into electronic.</p>
+                                <p>MI Wachid Hasjim Asy'ari memiliki prestasi dalam bidang akademik, olahraga, dan seni budaya, dengan banyak siswa yang memenangkan lomba di berbagai tingkat kejuaraan.</p>
                             </div>
                         </div>
                     </div>

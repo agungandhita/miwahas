@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BeritaRequest extends FormRequest
@@ -25,7 +26,7 @@ class BeritaRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'title'         => ['required','unique:beritas,title'],
+                'title'         => ['required',Rule::unique('beritas', 'title')->whereNull('deleted_at')],
                 'kategori_id'   => ['required'],
                 'content'       => ['required'],
                 'thumbnail'     => ['required','image','max:1024'],

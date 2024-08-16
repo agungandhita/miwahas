@@ -16,9 +16,13 @@ class PerpustakaanController extends Controller
      */
     public function index()
     {
-      $book = Book::all();
+      $book = Book::latest();
+      if(request('search')){
+        $book->where('name', 'like', '%'.request('search').'%');
+      }
+
+      $book = $book->get();
       $populer = Book::withCount('borrowings')->get()->take(4);
-      // dd($populer);
       return view('murid::perpustakaan.index', compact('book','populer'));
     }
 

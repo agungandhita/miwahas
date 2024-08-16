@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\dataMurid;
 use App\Models\Events;
+use App\Models\Jurusan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,14 +40,16 @@ class HomeController extends Controller
 
               $guru = User::where('role','Guru')->where('status','Aktif')->count();
               $murid = User::where('role','Murid')->where('status','Aktif')->count();
-              $alumni = User::where('role','Alumni')->where('status','Aktif')->count();
+              $mapel = Jurusan::count();
               $acara = Events::where('is_active','0')->count();
               $event = Events::where('is_active','0')->orderBy('created_at','desc')->first();
               $book = Book::sum('stock');
               $borrow = Borrowing::whereNull('lateness')->count();
               $member = Member::where('is_active',0)->count();
+              $member_active = Member::where('is_active',0)->count();
 
-              return view('backend.website.home', compact('guru','murid','alumni','event','acara','book','borrow','member'));
+
+              return view('backend.website.home', compact('guru','murid','mapel','event','acara','book','borrow','member', 'member_active'));
 
 
             }
@@ -114,6 +117,8 @@ class HomeController extends Controller
 
             // DASHBOARD BENDAHARA \\
             elseif ($role == 'Bendahara') {
+
+              
               return view('spp::index');
             }
         }

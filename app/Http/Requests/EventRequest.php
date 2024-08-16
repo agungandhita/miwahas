@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\maxCharacters;
+use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class EventRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class EventRequest extends FormRequest
     {
         if ($this->method() == 'POST') {
             return [
-                'title'     => ['required','unique:events,title'],
+                'title'     => ['required', Rule::unique('events', 'title')->whereNull('deleted_at')],
                 'desc'      => [new maxCharacters(200), 'required'],
                 'content'   => ['required'],
                 'acara'     => ['required'],

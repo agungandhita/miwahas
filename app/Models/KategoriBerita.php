@@ -11,4 +11,8 @@ class KategoriBerita extends Model
     use HasFactory,SoftDeletes;
 
     protected $table = 'kategori_beritas';
+    protected $guarded = [
+        'id'
+    ];
 }
+

@@ -15,7 +15,7 @@ class CreateKategoriBeritasTable extends Migration
     {
         Schema::create('kategori_beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->unique();
+            $table->string('nama');
             $table->enum('is_active',[0,1])->default(0);
 
             $table->integer('user_created')->nullable();

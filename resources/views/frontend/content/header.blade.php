@@ -47,7 +47,7 @@
 
                             <li><a href="#">Program</a>
                                 <ul>
-                                    <li class="has-child-menu"><a href="#">Program Studi</a>
+                                    <li class="has-child-menu"><a href="#">Mata Pelajaran</a>
                                         <ul class="thired-level">
                                             @foreach ($jurusanM as $jurusans)
                                                 <li><a href=" {{ url('program', $jurusans->slug)}} "> {{$jurusans->nama}} </a></li>
@@ -66,11 +66,8 @@
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
                             <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
 
-                            <li><a href="#">Lainnya</a>
-                                <ul>
-                                    <li><a href=" {{url('murid/perpustakaan')}} ">Perpustakaan</a></li>
-                                </ul>
-                            </li>
+                            {{-- <li><a href="{{url('murid/perpustakaan')}}">Perpustakaan</a>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>
@@ -115,11 +112,8 @@
                             <li class="{{ (request()->is('berita')) ? 'active' : '' }}"><a href=" {{route('berita')}} ">Berita</a></li>
                             <li><a href="{{url('ppdb')}}" target="_blank">PPDB</a></li>
 
-                            <li><a href="#">Lainnya</a>
-                                <ul>
-                                    <li><a href="">Perpustakaan</a></li>
-                                    <li><a href="">Alumni</a></li>
-                                </ul>
+                            <li><a href="{{url('murid/perpustakaan')}}">Perpustakaan</a>
+
                             </li>
                             <li>
                                 @auth
